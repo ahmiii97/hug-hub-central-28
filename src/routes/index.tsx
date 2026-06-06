@@ -67,6 +67,8 @@ const categories = [
 
 function Home() {
   const [hover, setHover] = useState<"asphalt" | "concrete" | null>("asphalt");
+  const [activeA, setActiveA] = useState(0);
+  const [activeC, setActiveC] = useState(0);
 
   return (
     <div className="min-h-screen bg-background text-ink">
