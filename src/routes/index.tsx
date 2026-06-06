@@ -254,32 +254,62 @@ function Home() {
             </div>
           </div>
 
-          {hover === "concrete" && (
-            <div className="pointer-events-auto absolute left-8 top-8 w-[320px] origin-top-left border border-white/15 bg-charcoal-deep/95 backdrop-blur-md">
-              <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-                <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/50">Index · Concrete</span>
-                <span className="font-mono text-[10px] text-amber">06</span>
-              </div>
-              <ul>
-                {concreteSubs.map((s, i) => (
-                  <li key={s}>
-                    <a
-                      href="#"
-                      className="flex items-center justify-between border-b border-white/5 px-5 py-3 text-[13px] text-white/85 transition-colors hover:bg-amber hover:text-charcoal-deep"
-                    >
-                      <span className="flex items-center gap-3">
-                        <span className="font-mono text-[10px] text-white/40">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        {s}
-                      </span>
-                      <ChevronRight className="h-3.5 w-3.5 opacity-60" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
+          <div
+            className={`pointer-events-none absolute inset-x-6 bottom-6 top-24 flex flex-col transition-all duration-500 ease-out ${
+              hover === "concrete" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
+            }`}
+          >
+            <div className="pointer-events-auto flex items-center justify-between border-b border-white/15 pb-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-amber">
+                {concreteSubs[activeC].code} · {concreteSubs[activeC].skus} SKUs
+              </span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">
+                Sub-Categories · 06
+              </span>
             </div>
-          )}
+            <div className="pointer-events-auto mt-4 grid flex-1 grid-cols-2 gap-2 content-start">
+              {concreteSubs.map((s, i) => (
+                <a
+                  key={s.code}
+                  href="#"
+                  onMouseEnter={(e) => {
+                    e.stopPropagation();
+                    setActiveC(i);
+                  }}
+                  style={{ transitionDelay: hover === "concrete" ? `${i * 40}ms` : "0ms" }}
+                  className={`group/item relative flex flex-col justify-between overflow-hidden border bg-charcoal-deep/70 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 ${
+                    activeC === i
+                      ? "border-amber bg-amber/15"
+                      : "border-white/10 hover:border-amber/60"
+                  }`}
+                >
+                  <span
+                    className={`absolute right-0 top-0 h-full w-[3px] transition-all ${
+                      activeC === i ? "bg-amber" : "bg-transparent"
+                    }`}
+                  />
+                  <div className="flex items-center justify-between">
+                    <ChevronRight
+                      className={`h-3.5 w-3.5 transition-all ${
+                        activeC === i ? "translate-x-0.5 text-amber" : "text-white/30"
+                      }`}
+                    />
+                    <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-white/45">
+                      {s.code}
+                    </span>
+                  </div>
+                  <div className="mt-3 text-right">
+                    <div className="font-display text-[14px] font-bold leading-tight text-white">
+                      {s.t}
+                    </div>
+                    <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">
+                      {s.c}
+                    </div>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
         </button>
       </section>
 
