@@ -354,13 +354,13 @@ function Home() {
         ))}
       </section>
 
-      {/* ===== Spec footer rail ===== */}
+      {/* ===== Spec stat rail ===== */}
       <section className="border-t border-rule bg-charcoal-deep">
         <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-px bg-white/5 md:grid-cols-4">
           {[
-            ["Catalog SKUs", "184,302"],
+            ["Catalogue SKUs", "184,302"],
             ["OEM Partners", "412"],
-            ["Avg. Ship Time", "27h"],
+            ["Avg. Dispatch", "27h"],
             ["Procurement Uptime", "99.98%"],
           ].map(([k, v]) => (
             <div key={k} className="bg-charcoal-deep px-8 py-8">
@@ -369,13 +369,192 @@ function Home() {
             </div>
           ))}
         </div>
-        <div className="border-t border-white/5">
-          <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 font-mono text-[10px] uppercase tracking-[0.28em] text-white/40">
-            <span>© Spares Automation · ISO 9001 Procurement</span>
-            <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-accent" /> Systems Operational</span>
-          </div>
+      </section>
+
+      {/* ===== TRUST STRIP ===== */}
+      <section className="border-t border-white/5 bg-charcoal">
+        <div className="mx-auto grid max-w-[1600px] grid-cols-2 gap-px bg-white/5 md:grid-cols-4">
+          {[
+            { icon: Truck, t: "Next-Working-Day UK", c: "Order by 16:00 GMT · DPD & Tuffnells" },
+            { icon: Factory, t: "OEM-Grade Spares", c: "Genuine & approved equivalents" },
+            { icon: ShieldCheck, t: "12-Month Warranty", c: "On all stocked line items" },
+            { icon: CreditCard, t: "30-Day Trade Account", c: "Subject to credit check" },
+          ].map(({ icon: Icon, t, c }) => (
+            <div key={t} className="flex items-start gap-4 bg-charcoal px-8 py-7">
+              <Icon className="h-5 w-5 shrink-0 text-accent" />
+              <div>
+                <div className="font-display text-[13px] font-bold uppercase tracking-tight text-white">{t}</div>
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-white/45">{c}</div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
+
+      {/* ===== FOOTER ===== */}
+      <footer className="border-t border-white/5 bg-charcoal-deep text-white/70">
+        <div className="mx-auto max-w-[1600px] px-6 py-16">
+          <div className="grid grid-cols-1 gap-12 md:grid-cols-12">
+            <div className="md:col-span-4">
+              <a href="/" className="flex items-center gap-3">
+                <div className="relative h-9 w-9">
+                  <div className="absolute inset-0 rotate-45 border-2 border-accent" />
+                  <div className="absolute inset-[6px] rotate-45 bg-accent" />
+                </div>
+                <div className="leading-none">
+                  <div className="font-display text-[16px] font-bold tracking-tight text-white">
+                    SPARES<span className="text-accent">.</span>AUTOMATION
+                  </div>
+                  <div className="mt-1 font-mono text-[9px] uppercase tracking-[0.28em] text-white/45">
+                    Industrial Procurement · UK
+                  </div>
+                </div>
+              </a>
+              <p className="mt-6 max-w-sm text-[13px] leading-relaxed text-white/55">
+                Specialist procurement of asphalt, ready-mix, packing and automation spares
+                for heavy plant operators across the United Kingdom and Ireland. Trade-only
+                supply since 2008.
+              </p>
+              <ul className="mt-6 space-y-3 font-mono text-[11px] uppercase tracking-[0.18em] text-white/55">
+                <li className="flex items-start gap-3">
+                  <MapPin className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent" />
+                  Unit 14, Trafford Park Trade Centre, Manchester M17 1RU
+                </li>
+                <li className="flex items-center gap-3">
+                  <Phone className="h-3.5 w-3.5 shrink-0 text-accent" />
+                  +44 (0)161 818 7420
+                </li>
+                <li className="flex items-center gap-3">
+                  <Mail className="h-3.5 w-3.5 shrink-0 text-accent" />
+                  trade@spares-automation.co.uk
+                </li>
+              </ul>
+              <div className="mt-6 flex gap-2">
+                {[Linkedin, Youtube, Twitter].map((Icon, i) => (
+                  <a
+                    key={i}
+                    href="#"
+                    className="flex h-9 w-9 items-center justify-center border border-white/15 text-white/60 transition-colors hover:border-accent hover:text-accent"
+                    aria-label="Social link"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {[
+              {
+                h: "Catalogue",
+                links: [
+                  "Asphalt / Blacktop Spares",
+                  "Ready-Mix Concrete Spares",
+                  "Packing Machinery",
+                  "Automation & Drives",
+                  "Home Automation",
+                  "New Arrivals",
+                ],
+              },
+              {
+                h: "Trade Services",
+                links: [
+                  "Open a Trade Account",
+                  "Bulk & Contract Pricing",
+                  "Same-Day Dispatch",
+                  "Engineer Call-Out",
+                  "Cross-Reference Lookup",
+                  "OEM Partnerships",
+                ],
+              },
+              {
+                h: "Company",
+                links: [
+                  "About Spares Automation",
+                  "Industries We Serve",
+                  "Case Studies",
+                  "Careers in the UK",
+                  "Press & Media",
+                  "Contact Procurement Desk",
+                ],
+              },
+              {
+                h: "Support",
+                links: [
+                  "Order Tracking",
+                  "Returns & RMA",
+                  "Delivery Information",
+                  "Technical Datasheets",
+                  "Help Centre",
+                  "Raise a Quote",
+                ],
+              },
+            ].map((col) => (
+              <div key={col.h} className="md:col-span-2">
+                <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
+                  {col.h}
+                </div>
+                <ul className="mt-5 space-y-3">
+                  {col.links.map((l) => (
+                    <li key={l}>
+                      <a
+                        href="#"
+                        className="text-[13px] text-white/70 transition-colors hover:text-accent"
+                      >
+                        {l}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 gap-8 border-t border-white/10 pt-10 md:grid-cols-12 md:items-end">
+            <div className="md:col-span-5">
+              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/40">
+                Trade Bulletin
+              </div>
+              <p className="mt-3 text-[13px] text-white/60">
+                Monthly stock alerts, OEM updates and procurement insights — for UK trade only.
+              </p>
+            </div>
+            <form className="md:col-span-7" onSubmit={(e) => e.preventDefault()}>
+              <label className="flex h-12 items-center gap-2 border border-white/15 bg-white/[0.03] pl-4 pr-1 focus-within:border-accent">
+                <Mail className="h-4 w-4 text-white/50" />
+                <input
+                  type="email"
+                  required
+                  placeholder="your.name@company.co.uk"
+                  className="flex-1 bg-transparent font-mono text-[12px] tracking-wide text-white placeholder:text-white/30 focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="h-10 bg-accent px-6 font-mono text-[11px] uppercase tracking-[0.22em] text-accent-foreground transition-colors hover:bg-accent/90"
+                >
+                  Subscribe
+                </button>
+              </label>
+            </form>
+          </div>
+        </div>
+
+        <div className="border-t border-white/10">
+          <div className="mx-auto flex max-w-[1600px] flex-col gap-4 px-6 py-5 font-mono text-[10px] uppercase tracking-[0.28em] text-white/40 md:flex-row md:items-center md:justify-between">
+            <span>
+              © {new Date().getFullYear()} Spares Automation Ltd · Registered in England & Wales · Co. No. 08421762 · VAT GB 162 4837 22
+            </span>
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              <a href="#" className="hover:text-accent">Privacy Notice</a>
+              <a href="#" className="hover:text-accent">Cookie Policy</a>
+              <a href="#" className="hover:text-accent">Terms of Trade</a>
+              <a href="#" className="hover:text-accent">Modern Slavery</a>
+              <span className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-accent" /> ISO 9001 · Systems Operational
+              </span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }
