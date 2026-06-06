@@ -166,36 +166,62 @@ function Home() {
             </div>
           </div>
 
-          {/* Hover dropdown overlay */}
+          {/* Interactive sub-category panel */}
           <div
-            className={`absolute right-8 top-8 w-[320px] origin-top-right border border-white/15 bg-charcoal-deep/95 backdrop-blur-md transition-all duration-300 ${
-              hover === "asphalt" ? "pointer-events-auto opacity-100 translate-y-0" : "pointer-events-none opacity-0 -translate-y-2"
+            className={`pointer-events-none absolute inset-x-6 bottom-6 top-24 flex flex-col transition-all duration-500 ease-out ${
+              hover === "asphalt" ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             }`}
           >
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-3">
-              <span className="font-mono text-[10px] uppercase tracking-[0.28em] text-white/50">
-                Index · Asphalt
+            <div className="pointer-events-auto flex items-center justify-between border-b border-white/15 pb-3">
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-white/60">
+                Sub-Categories · 06
               </span>
-              <span className="font-mono text-[10px] text-accent">06</span>
+              <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-accent">
+                {asphaltSubs[activeA].code} · {asphaltSubs[activeA].skus} SKUs
+              </span>
             </div>
-            <ul>
+            <div className="pointer-events-auto mt-4 grid flex-1 grid-cols-2 gap-2 content-start">
               {asphaltSubs.map((s, i) => (
-                <li key={s}>
-                  <a
-                    href="#"
-                    className="flex items-center justify-between border-b border-white/5 px-5 py-3 text-[13px] text-white/85 transition-colors hover:bg-accent hover:text-accent-foreground"
-                  >
-                    <span className="flex items-center gap-3">
-                      <span className="font-mono text-[10px] text-white/40 group-hover:text-accent-foreground/70">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                      {s}
+                <a
+                  key={s.code}
+                  href="#"
+                  onMouseEnter={(e) => {
+                    e.stopPropagation();
+                    setActiveA(i);
+                  }}
+                  style={{ transitionDelay: hover === "asphalt" ? `${i * 40}ms` : "0ms" }}
+                  className={`group/item relative flex flex-col justify-between overflow-hidden border bg-charcoal-deep/70 p-4 backdrop-blur-md transition-all duration-300 hover:-translate-y-0.5 ${
+                    activeA === i
+                      ? "border-accent bg-accent/15"
+                      : "border-white/10 hover:border-accent/60"
+                  }`}
+                >
+                  <span
+                    className={`absolute left-0 top-0 h-full w-[3px] transition-all ${
+                      activeA === i ? "bg-accent" : "bg-transparent"
+                    }`}
+                  />
+                  <div className="flex items-center justify-between">
+                    <span className="font-mono text-[9px] uppercase tracking-[0.28em] text-white/45">
+                      {s.code}
                     </span>
-                    <ChevronRight className="h-3.5 w-3.5 opacity-60" />
-                  </a>
-                </li>
+                    <ChevronRight
+                      className={`h-3.5 w-3.5 transition-all ${
+                        activeA === i ? "translate-x-0.5 text-accent" : "text-white/30"
+                      }`}
+                    />
+                  </div>
+                  <div className="mt-3">
+                    <div className="font-display text-[14px] font-bold leading-tight text-white">
+                      {s.t}
+                    </div>
+                    <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-white/45">
+                      {s.c}
+                    </div>
+                  </div>
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
         </button>
 
