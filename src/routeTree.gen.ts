@@ -9,8 +9,56 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as PackingRouteImport } from './routes/packing'
+import { Route as NewArrivalsRouteImport } from './routes/new-arrivals'
+import { Route as HomeControlsRouteImport } from './routes/home-controls'
+import { Route as ContactUsRouteImport } from './routes/contact-us'
+import { Route as ConcreteRouteImport } from './routes/concrete'
+import { Route as AutomationRouteImport } from './routes/automation'
+import { Route as AsphaltRouteImport } from './routes/asphalt'
+import { Route as AboutUsRouteImport } from './routes/about-us'
 import { Route as IndexRouteImport } from './routes/index'
 
+const PackingRoute = PackingRouteImport.update({
+  id: '/packing',
+  path: '/packing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewArrivalsRoute = NewArrivalsRouteImport.update({
+  id: '/new-arrivals',
+  path: '/new-arrivals',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HomeControlsRoute = HomeControlsRouteImport.update({
+  id: '/home-controls',
+  path: '/home-controls',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactUsRoute = ContactUsRouteImport.update({
+  id: '/contact-us',
+  path: '/contact-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConcreteRoute = ConcreteRouteImport.update({
+  id: '/concrete',
+  path: '/concrete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AutomationRoute = AutomationRouteImport.update({
+  id: '/automation',
+  path: '/automation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AsphaltRoute = AsphaltRouteImport.update({
+  id: '/asphalt',
+  path: '/asphalt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutUsRoute = AboutUsRouteImport.update({
+  id: '/about-us',
+  path: '/about-us',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +67,144 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/asphalt': typeof AsphaltRoute
+  '/automation': typeof AutomationRoute
+  '/concrete': typeof ConcreteRoute
+  '/contact-us': typeof ContactUsRoute
+  '/home-controls': typeof HomeControlsRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/packing': typeof PackingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/asphalt': typeof AsphaltRoute
+  '/automation': typeof AutomationRoute
+  '/concrete': typeof ConcreteRoute
+  '/contact-us': typeof ContactUsRoute
+  '/home-controls': typeof HomeControlsRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/packing': typeof PackingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-us': typeof AboutUsRoute
+  '/asphalt': typeof AsphaltRoute
+  '/automation': typeof AutomationRoute
+  '/concrete': typeof ConcreteRoute
+  '/contact-us': typeof ContactUsRoute
+  '/home-controls': typeof HomeControlsRoute
+  '/new-arrivals': typeof NewArrivalsRoute
+  '/packing': typeof PackingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about-us'
+    | '/asphalt'
+    | '/automation'
+    | '/concrete'
+    | '/contact-us'
+    | '/home-controls'
+    | '/new-arrivals'
+    | '/packing'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about-us'
+    | '/asphalt'
+    | '/automation'
+    | '/concrete'
+    | '/contact-us'
+    | '/home-controls'
+    | '/new-arrivals'
+    | '/packing'
+  id:
+    | '__root__'
+    | '/'
+    | '/about-us'
+    | '/asphalt'
+    | '/automation'
+    | '/concrete'
+    | '/contact-us'
+    | '/home-controls'
+    | '/new-arrivals'
+    | '/packing'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutUsRoute: typeof AboutUsRoute
+  AsphaltRoute: typeof AsphaltRoute
+  AutomationRoute: typeof AutomationRoute
+  ConcreteRoute: typeof ConcreteRoute
+  ContactUsRoute: typeof ContactUsRoute
+  HomeControlsRoute: typeof HomeControlsRoute
+  NewArrivalsRoute: typeof NewArrivalsRoute
+  PackingRoute: typeof PackingRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/packing': {
+      id: '/packing'
+      path: '/packing'
+      fullPath: '/packing'
+      preLoaderRoute: typeof PackingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/new-arrivals': {
+      id: '/new-arrivals'
+      path: '/new-arrivals'
+      fullPath: '/new-arrivals'
+      preLoaderRoute: typeof NewArrivalsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/home-controls': {
+      id: '/home-controls'
+      path: '/home-controls'
+      fullPath: '/home-controls'
+      preLoaderRoute: typeof HomeControlsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact-us': {
+      id: '/contact-us'
+      path: '/contact-us'
+      fullPath: '/contact-us'
+      preLoaderRoute: typeof ContactUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/concrete': {
+      id: '/concrete'
+      path: '/concrete'
+      fullPath: '/concrete'
+      preLoaderRoute: typeof ConcreteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/automation': {
+      id: '/automation'
+      path: '/automation'
+      fullPath: '/automation'
+      preLoaderRoute: typeof AutomationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/asphalt': {
+      id: '/asphalt'
+      path: '/asphalt'
+      fullPath: '/asphalt'
+      preLoaderRoute: typeof AsphaltRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-us': {
+      id: '/about-us'
+      path: '/about-us'
+      fullPath: '/about-us'
+      preLoaderRoute: typeof AboutUsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,7 +217,25 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutUsRoute: AboutUsRoute,
+  AsphaltRoute: AsphaltRoute,
+  AutomationRoute: AutomationRoute,
+  ConcreteRoute: ConcreteRoute,
+  ContactUsRoute: ContactUsRoute,
+  HomeControlsRoute: HomeControlsRoute,
+  NewArrivalsRoute: NewArrivalsRoute,
+  PackingRoute: PackingRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
